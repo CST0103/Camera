@@ -11,6 +11,7 @@ def show_distance(event, x, y, args, params):
     global point
     point = ( x, y)
 
+
 # Initialize Camera Intel Realsense
 dc = DepthCamera()
 
