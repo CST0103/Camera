@@ -63,6 +63,7 @@ for j in range(1,20) :
 
                 cv2.imshow("color_frame", color_frame)
                 cv2.imshow("Canny",img1)
+                cv2.imwrite("distance test.jpg",color_frame)
 
 cv2.waitKey(0)
 
