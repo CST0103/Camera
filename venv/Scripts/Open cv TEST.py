@@ -23,11 +23,23 @@ line_image = np.copy(img) * 0  # creating a blank to draw lines on
 # Output "lines" is an array containing endpoints of detected line segments
 lines = cv2.HoughLinesP(edges, rho, theta, threshold, np.array([]),
                     min_line_length, max_line_gap)
+squares = [[lines(1)]]
+
+for line1 in lines:
+    for square in squares:
+        for line2 in square:
+            if line1 != line2:
+                if intersects(line1, line2):
+                    square.append(line1)
+                else:
+                    squares.append([line1])
 
 for line in lines:
     for x1,y1,x2,y2 in line:
         cv2.line(line_image,(x1,y1),(x2,y2),(255,0,0),2)
         print("x1 {} y1 {} x2 {} y2 {}".format(x1,y1,x2,y2))
+
+
 
 lines_edges = cv2.addWeighted(img, 0.5, line_image, 1, 0)
 
