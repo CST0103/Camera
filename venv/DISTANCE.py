@@ -6,7 +6,6 @@ import cv2 as cv
 import numpy as np
 
 point = (0, 0)
-center = (0, 0)
 def show_distance(event, x, y, args, params):
     global point
     point = ( x, y)
