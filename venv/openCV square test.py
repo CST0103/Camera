@@ -26,7 +26,7 @@ def draw_min_rect_circle(img, cnts):  # conts = contours
 
 
 def draw_approx_hull_polygon(img, cnts):
-    # img = np.copy(img)
+    #img = np.copy(img)
     img = np.zeros(img.shape, dtype=np.uint8)
 
     cv2.drawContours(img, cnts, -1, (255, 0, 0), 2)  # blue
@@ -48,7 +48,8 @@ def draw_approx_hull_polygon(img, cnts):
 
 
 def run():
-    image = cv2.imread('test.jpg')  # a black objects on white image is better
+    image = cv2.imread('distance test.jpg')  # a black objects on white image is better
+
 
     gray = cv2.cvtColor(image.copy(), cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
@@ -56,7 +57,7 @@ def run():
 
     contours, hierarchy = cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # print(hierarchy, ":hierarchy")
+
 
 
     imgs = [

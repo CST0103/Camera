@@ -13,11 +13,6 @@ def show_distance(event, x, y, args, params):
 # Initialize Camera Intel Realsense
 dc = DepthCamera()
 
-#Create mouse event
-
-cv2.namedWindow("color_frame")
-cv2.setMouseCallback("color_frame", show_distance)
-
 
 
 for j in range(1,20) :
@@ -29,6 +24,7 @@ for j in range(1,20) :
     gray = cv.medianBlur(gray, 5)
 
     rows = gray.shape[0]
+
 #找圓形
     circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 8,
                                   param1=100, param2=30,
@@ -65,6 +61,7 @@ for j in range(1,20) :
                 cv2.imwrite("distance test.jpg",color_frame)
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
 
