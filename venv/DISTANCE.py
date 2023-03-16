@@ -28,9 +28,12 @@ for j in range(1,20) :
 #找圓形
     circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 8,
                                   param1=100, param2=30,
-                                  minRadius=1, maxRadius=20)
+                                  minRadius=1, maxRadius=60)
 
     img1 = cv2.Canny(gray, 50, 200)
+
+    cv2.imwrite("distance test.jpg", color_frame)
+
 #畫出圓形
     if circles is not None:
             circles = np.uint16(np.around(circles))
@@ -56,9 +59,10 @@ for j in range(1,20) :
                             (255, 0, 255), 2)
 
 
-                cv2.imshow("color_frame", color_frame)
-                cv2.imshow("Canny",img1)
-                cv2.imwrite("distance test.jpg",color_frame)
+
+cv2.imshow("color_frame", color_frame)
+cv2.imshow("Canny",img1)
+
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
